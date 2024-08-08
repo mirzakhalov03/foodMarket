@@ -3,10 +3,7 @@ import { AiOutlinePlus } from "react-icons/ai";
 const Card = ({ recipe }) => {
   const { name, description, price, image } = recipe;
 
-  // const truncateDescription = (description) => {
-  //   // const words = description.split(".");
-  //   return description.length > 15 ? words.slice(0, 15).join(" ") + "..." : desc;
-  // };
+ 
 
   return (
     <div className="w-[300px] h-[350px] bg-[#fff] rounded-[30px]">
