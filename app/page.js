@@ -3,7 +3,11 @@ import MainCard from "@/components/mainCard/page";
 import Nav from "@/components/nav/page";
 import Sider from "@/components/sider/page";
 
-export default function Home() {
+export default async function Home() {
+  const response = await fetch("https://dummyjson.com/recipes");
+  const data = await response.json();
+  const recipes = data.recipes.slice(0, 4); // Fetch and limit to 4 recipes
+
   return (
     <>
       <div className="flex gap-5 w-full min-h-screen bg-[#E6E3E3]">
@@ -13,11 +17,10 @@ export default function Home() {
           <MainCard />
           <br />
           <br />
-          <div className="card-wrapper flex items-center justify-center gap-10 w-full h-[380px] ">
-            <Card />
-            <Card />
-            <Card />
-            <Card />
+          <div className="card-wrapper flex items-center justify-center gap-10 w-full h-[380px]">
+            {recipes.map((recipe) => (
+              <Card key={recipe.id} recipe={recipe} />
+            ))}
           </div>
         </div>
       </div>

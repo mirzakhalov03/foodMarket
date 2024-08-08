@@ -1,17 +1,27 @@
+import { AiOutlinePlus } from "react-icons/ai";
 
-const Card = () => {
+const Card = ({ recipe }) => {
+  const { name, description, price, image } = recipe;
+
+  // const truncateDescription = (description) => {
+  //   // const words = description.split(".");
+  //   return description.length > 15 ? words.slice(0, 15).join(" ") + "..." : desc;
+  // };
+
   return (
-    <div className="w-[300px] h-[350px] bg-[#fff] rounded-[30px] ">
-      <img src="/mainfood.png" className="w-[250px] h mt-[-50px] m-auto" alt="" />
-      <div className="p-5">
-        <h1 className="text-xl font-semibold">Food Name</h1>
-        <p className="">Food Description</p>
-        <p className="">Food Price</p>
-        <img src="/stars.svg" alt="" />
-        <button className="bg-[#F6F6F6] w-full h-[50px] rounded-[10px]">Add to cart</button>
+    <div className="w-[300px] h-[350px] bg-[#fff] rounded-[30px]">
+      <img src={image || "/mainfood.png"} className="w-[200px] rounded-[30px] mt-2 m-auto" alt={name} />
+      <div className="p-5 relative">
+        <h1 className="text-xl font-semibold">{name}</h1>
+        <p className="text-[12px]">{description || "lorem ipsum dolor sit. Lorem ipsum is the dummiest text example"}</p>
+        <img src="/stars.svg" alt="Rating" />
+        <button className="bg-[#111] text-white flex items-center justify-center text-[25px] w-[40px] h-[40px] rounded-[10px] absolute right-5 bottom-5">
+          <AiOutlinePlus />
+        </button>
+        <p className="text-[22px]">${price || 5.08}</p>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Card
+export default Card;
